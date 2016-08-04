@@ -3,26 +3,29 @@ import java.lang.*;
 import java.io.*;
 
 class GFG {
-	static ArrayList<String> out = new ArrayList<String>();
-	 public static void fun(ArrayList<Integer> intArr)
+	public static ArrayList<String> out = new ArrayList<String>();
+	 
+	public static void fun(ArrayList<Integer> intArr,int num)
+	{
+		int k = 0;
+		int count = 0;
+		for(Integer n:intArr)
 		{
-			int count=0;
-			for(int i=0;i<intArr.size();i++)
+			k = n/num;
+			if(n%num==0)
 			{
-				count = 0;
-				for(int j=i+1;j<intArr.size();j++)
-				{
-					if(intArr.get(i)<intArr.get(j))
-					{
-						count++;
-					}
 				
-
-				}
-				out.add(Integer.toString(count));
+				count+=k;
 			}
-			out.add("\n");
+			else
+			{
+				count=count+k+1;
+			}
 		}
+		out.add(count+"\n");
+
+	}
+	
 	public static void main (String[] args) {
 		Scanner scan = new Scanner(System.in);
 		int numT = Integer.parseInt(scan.nextLine());
@@ -30,20 +33,23 @@ class GFG {
 		 int tot = 2*numT;
 		// System.out.println(tot);
 		int sizeArr = 0; 
-		int str1=0;
+		String str1="";
 		String str2="";
 		int count = 0;
 		
 		//String str = "";
 		ArrayList<Integer> intArr = new ArrayList<Integer>();
-		
+		int divNum = 0;
 			 
 			 
 			 for(int i=0;i<tot;i++)
 			 {
 			 	if(i%2==0)
 			 	{
-			 		str1 = Integer.parseInt(scan.nextLine());
+			 		str1 = scan.nextLine();
+			 		String splt[] = str1.split(" ");
+			 		divNum = Integer.parseInt(splt[1]);
+
 			 	}
 			 	else
 			 	{
@@ -53,7 +59,7 @@ class GFG {
 					{
 						intArr.add(Integer.parseInt(arr[j]));
 					}
-			 		fun(intArr);
+			 		fun(intArr,divNum);
 			 		intArr.clear();
 			 	}
 			 }
@@ -70,12 +76,12 @@ class GFG {
 		
 		for(String n :out)
 		{
-			if(n=="\n")
-			{
-				System.out.print(n);
-			}
-			else
-			System.out.print(n+" ");
+			// if(n=="\n")
+			// {
+			// 	System.out.print(n);
+			// }
+			// else
+			System.out.print(n);
 		}
 		//code
 	}
