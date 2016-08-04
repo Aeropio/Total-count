@@ -3,61 +3,80 @@ import java.lang.*;
 import java.io.*;
 
 class GFG {
-	public static Boolean isPrime(int n)
-	{
-		int count=0;
-		for(int i=1;i<=n;i++)
+	static ArrayList<String> out = new ArrayList<String>();
+	 public static void fun(ArrayList<Integer> intArr)
 		{
-			if(n%i==0)
+			int count=0;
+			for(int i=0;i<intArr.size();i++)
 			{
-				count++;
+				count = 0;
+				for(int j=i+1;j<intArr.size();j++)
+				{
+					if(intArr.get(i)<intArr.get(j))
+					{
+						count++;
+					}
+				
+
+				}
+				out.add(Integer.toString(count));
 			}
+			out.add("\n");
 		}
-		if(count==2)
-		{
-			return true;
-		}
-		return false;
-	}
 	public static void main (String[] args) {
-	    Scanner scan = new Scanner(System.in);
-	    int num = Integer.parseInt(scan.nextLine());
-	    System.out.println("number of nums is "+num);
-	    ArrayList<Integer> list = new ArrayList<Integer>();
-	    for(int i=0;i<num;i++)
-	    {
-	        list.add(Integer.parseInt(scan.nextLine()));
-	    }
-	    for(Integer n:list)
-	    {
-	    	System.out.println("the numbers are "+n);
-	    }
-		//code
-		//int sum = 0;
-		ArrayList<Integer> out = new ArrayList<Integer>();
-		int sum=0;
-		String o = "";
-		for(Integer n:list)
-		{
-			System.out.println("inside for loop  "+n);
-			 sum = 0;
-		    
-		   
-			 o = Integer.toString(n);
-			 String arr[] = o.split("");
-			 for(int i=0;i<arr.length;i++)
+		Scanner scan = new Scanner(System.in);
+		int numT = Integer.parseInt(scan.nextLine());
+		//System.out.println(numT);
+		 int tot = 2*numT;
+		// System.out.println(tot);
+		int sizeArr = 0; 
+		int str1=0;
+		String str2="";
+		int count = 0;
+		
+		//String str = "";
+		ArrayList<Integer> intArr = new ArrayList<Integer>();
+		
+			 
+			 
+			 for(int i=0;i<tot;i++)
 			 {
-			 	if(isPrime(Integer.parseInt(arr[i])))
+			 	if(i%2==0)
 			 	{
-			 		sum=sum+Integer.parseInt(arr[i]);
+			 		str1 = Integer.parseInt(scan.nextLine());
+			 	}
+			 	else
+			 	{
+			 		str2 = scan.nextLine();
+			 		String arr[] = str2.split(" ");
+					for(int j=0;j<arr.length;j++)
+					{
+						intArr.add(Integer.parseInt(arr[j]));
+					}
+			 		fun(intArr);
+			 		intArr.clear();
 			 	}
 			 }
-			 out.add(sum);
+			 	
+			
 
-		}
-		for(Integer n :out)
+
+		 
+		 
+		
+		
+			
+			
+		
+		for(String n :out)
 		{
-		    System.out.println(n);
+			if(n=="\n")
+			{
+				System.out.print(n);
+			}
+			else
+			System.out.print(n+" ");
 		}
+		//code
 	}
 }
